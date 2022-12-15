@@ -33,7 +33,7 @@ namespace VRChatCleanup
         {
             try
             {
-                Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\VRChat");
+                Directory.Delete(folder);
             } catch { }
         }
     }
