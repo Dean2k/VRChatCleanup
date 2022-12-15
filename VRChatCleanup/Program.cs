@@ -24,6 +24,8 @@ namespace VRChatCleanup
             DeleteFolder(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\VRChat");
             Console.WriteLine("Done\nDeleting VRChat Unity Folder");
             DeleteFolder(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Temp\\DefaultCompany");
+            Console.WriteLine("Done\nDeleting VRChat Unity Folder 2");
+            DeleteFolder(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low\\DefaultCompany");
             Console.WriteLine("Done\nDeleting Registry Values");
             DeleteRegistry();
             Console.WriteLine("Done, Make sure to use your fav HWID spoofer and you should be fairly safe.");
