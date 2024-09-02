@@ -14,6 +14,10 @@ namespace VRChatCleanup
         {
             Console.WriteLine("This is irreversible and will delete all VRChat Cache / Temp data & Registry things\nPress any key to continue");
             Console.ReadLine();
+            Console.WriteLine("Deleting Easy Anti Cheat Folder");
+            DeleteFolder(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\EasyAntiCheat");
+            Console.WriteLine("Unity");
+            DeleteFolder(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Unity");
             Console.WriteLine("Deleting VRChat Local Folder");
             DeleteFolder(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VRChat");
             Console.WriteLine("Done\nDeleting VRChat Local Temp Folder");
@@ -30,7 +34,7 @@ namespace VRChatCleanup
             DeleteRegistry();
             Console.WriteLine("Done, Make sure to use your fav HWID spoofer and you should be fairly safe.");
             Console.ReadLine();
-            
+
 
         }
 
@@ -38,20 +42,21 @@ namespace VRChatCleanup
         {
             try
             {
-                Directory.Delete(folder);
-            } catch { }
+                Console.WriteLine(folder);
+                Directory.Delete(folder, true);
+            }
+            catch { }
         }
 
         static private void DeleteRegistry()
         {
             string keyName = @"Software\VRChat";
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(keyName, true))
-            {
-                if (key != null)
-                {
-                    key.DeleteSubKey("VRChat");
-                }
-            }
+            Registry.CurrentUser.DeleteSubKey(keyName, false);
+
+
+            keyName = @"Software\Unity Technologies";
+            Registry.CurrentUser.DeleteSubKey(keyName, false);
+
         }
     }
 }
